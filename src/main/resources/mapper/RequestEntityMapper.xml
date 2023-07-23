@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuzimo.myownapi.mapper.RequestEntityMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuzimo.myownapi.entity.RequestEntity">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="nameSpace" column="name_space" jdbcType="VARCHAR"/>
+            <result property="requestName" column="request_name" jdbcType="VARCHAR"/>
+            <result property="requestUrl" column="request_url" jdbcType="VARCHAR"/>
+            <result property="requestType" column="request_type" jdbcType="VARCHAR"/>
+            <result property="requestHeaders" column="request_headers" jdbcType="VARCHAR"/>
+            <result property="requestBody" column="request_body" jdbcType="VARCHAR"/>
+            <result property="isDel" column="is_del" jdbcType="BIGINT"/>
+            <result property="creatorUuid" column="creator_uuid" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updaterUuid" column="updater_uuid" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,name_space,
+        request_name,request_url,request_type,
+        request_headers,request_body,is_del,
+        creator_uuid,create_time,updater_uuid,
+        update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_request
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_request
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zhuzimo.myownapi.entity.RequestEntity" useGeneratedKeys="true">
+        insert into t_request
+        ( id,user_id,name_space
+        ,request_name,request_url,request_type
+        ,request_headers,request_body,is_del
+        ,creator_uuid,create_time,updater_uuid
+        ,update_time)
+        values (#{id,jdbcType=BIGINT},#{userId,jdbcType=BIGINT},#{nameSpace,jdbcType=VARCHAR}
+        ,#{requestName,jdbcType=VARCHAR},#{requestUrl,jdbcType=VARCHAR},#{requestType,jdbcType=VARCHAR}
+        ,#{requestHeaders,jdbcType=VARCHAR},#{requestBody,jdbcType=VARCHAR},#{isDel,jdbcType=BIGINT}
+        ,#{creatorUuid,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{updaterUuid,jdbcType=VARCHAR}
+        ,#{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zhuzimo.myownapi.entity.RequestEntity" useGeneratedKeys="true">
+        insert into t_request
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="userId != null">user_id,</if>
+                <if test="nameSpace != null">name_space,</if>
+                <if test="requestName != null">request_name,</if>
+                <if test="requestUrl != null">request_url,</if>
+                <if test="requestType != null">request_type,</if>
+                <if test="requestHeaders != null">request_headers,</if>
+                <if test="requestBody != null">request_body,</if>
+                <if test="isDel != null">is_del,</if>
+                <if test="creatorUuid != null">creator_uuid,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updaterUuid != null">updater_uuid,</if>
+                <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
+                <if test="nameSpace != null">#{nameSpace,jdbcType=VARCHAR},</if>
+                <if test="requestName != null">#{requestName,jdbcType=VARCHAR},</if>
+                <if test="requestUrl != null">#{requestUrl,jdbcType=VARCHAR},</if>
+                <if test="requestType != null">#{requestType,jdbcType=VARCHAR},</if>
+                <if test="requestHeaders != null">#{requestHeaders,jdbcType=VARCHAR},</if>
+                <if test="requestBody != null">#{requestBody,jdbcType=VARCHAR},</if>
+                <if test="isDel != null">#{isDel,jdbcType=BIGINT},</if>
+                <if test="creatorUuid != null">#{creatorUuid,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updaterUuid != null">#{updaterUuid,jdbcType=VARCHAR},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zhuzimo.myownapi.entity.RequestEntity">
+        update t_request
+        <set>
+                <if test="userId != null">
+                    user_id = #{userId,jdbcType=BIGINT},
+                </if>
+                <if test="nameSpace != null">
+                    name_space = #{nameSpace,jdbcType=VARCHAR},
+                </if>
+                <if test="requestName != null">
+                    request_name = #{requestName,jdbcType=VARCHAR},
+                </if>
+                <if test="requestUrl != null">
+                    request_url = #{requestUrl,jdbcType=VARCHAR},
+                </if>
+                <if test="requestType != null">
+                    request_type = #{requestType,jdbcType=VARCHAR},
+                </if>
+                <if test="requestHeaders != null">
+                    request_headers = #{requestHeaders,jdbcType=VARCHAR},
+                </if>
+                <if test="requestBody != null">
+                    request_body = #{requestBody,jdbcType=VARCHAR},
+                </if>
+                <if test="isDel != null">
+                    is_del = #{isDel,jdbcType=BIGINT},
+                </if>
+                <if test="creatorUuid != null">
+                    creator_uuid = #{creatorUuid,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updaterUuid != null">
+                    updater_uuid = #{updaterUuid,jdbcType=VARCHAR},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zhuzimo.myownapi.entity.RequestEntity">
+        update t_request
+        set 
+            user_id =  #{userId,jdbcType=BIGINT},
+            name_space =  #{nameSpace,jdbcType=VARCHAR},
+            request_name =  #{requestName,jdbcType=VARCHAR},
+            request_url =  #{requestUrl,jdbcType=VARCHAR},
+            request_type =  #{requestType,jdbcType=VARCHAR},
+            request_headers =  #{requestHeaders,jdbcType=VARCHAR},
+            request_body =  #{requestBody,jdbcType=VARCHAR},
+            is_del =  #{isDel,jdbcType=BIGINT},
+            creator_uuid =  #{creatorUuid,jdbcType=VARCHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            updater_uuid =  #{updaterUuid,jdbcType=VARCHAR},
+            update_time =  #{updateTime,jdbcType=TIMESTAMP}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>
