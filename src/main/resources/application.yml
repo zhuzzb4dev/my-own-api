@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.1.239:3306/api_cloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+mybatis:
+  type-aliases-package: com.zhuzimo.myownapi.entity
+  mapper-locations: classpath:mapper/*.xml
