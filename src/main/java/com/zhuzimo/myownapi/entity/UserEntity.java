@@ -50,6 +50,16 @@ public class UserEntity implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 功德数
+     */
+    private Long amount;
+
+    /**
+     * 版本
+     */
+    private Long version;
+
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -71,7 +81,9 @@ public class UserEntity implements Serializable {
             && (this.getCreatorUuid() == null ? other.getCreatorUuid() == null : this.getCreatorUuid().equals(other.getCreatorUuid()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdaterUuid() == null ? other.getUpdaterUuid() == null : this.getUpdaterUuid().equals(other.getUpdaterUuid()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
+            && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()));
     }
 
     @Override
@@ -86,6 +98,8 @@ public class UserEntity implements Serializable {
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdaterUuid() == null) ? 0 : getUpdaterUuid().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getAmount() == null) ? 0 : getAmount().hashCode());
+        result = prime * result + ((getVersion() == null) ? 0 : getVersion().hashCode());
         return result;
     }
 
@@ -103,6 +117,8 @@ public class UserEntity implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", updaterUuid=").append(updaterUuid);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", amount=").append(amount);
+        sb.append(", version=").append(version);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
