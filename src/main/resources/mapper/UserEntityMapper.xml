@@ -120,4 +120,10 @@
             version =  #{version,jdbcType=BIGINT}
         where   id = #{id,jdbcType=BIGINT} 
     </update>
+
+
+
+    <update id="addAmount">
+        update t_user set amount = amount + #{amount} where id = #{id}
+    </update>
 </mapper>

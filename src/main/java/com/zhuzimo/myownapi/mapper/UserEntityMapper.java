@@ -1,6 +1,7 @@
 package com.zhuzimo.myownapi.mapper;
 
 import com.zhuzimo.myownapi.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
 
 /**
 * @author zhuzhibin
@@ -22,4 +23,5 @@ public interface UserEntityMapper {
 
     int updateByPrimaryKey(UserEntity record);
 
+    void addAmount(@Param("id") Long id, @Param("amount") int i);
 }
