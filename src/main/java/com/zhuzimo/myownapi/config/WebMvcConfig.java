@@ -1,5 +1,6 @@
 package com.zhuzimo.myownapi.config;
 
+import com.zhuzimo.myownapi.config.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
